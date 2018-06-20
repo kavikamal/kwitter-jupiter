@@ -1,3 +1,7 @@
+.ui.header {
+  margin-top: 20px;
+}
+
 .loginFormInput {
-  width: 200px;
+  width: 350px;
 }
