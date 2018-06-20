@@ -1,14 +1,7 @@
-// import { combineReducers } from 'redux';
-// import { loginUserReducer } from './reducers';
-
 import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from '../actions';
 
-// export default rootReducer = combineReducers({
-//     loginUserReducer
-//  });
-
 const initialState = {
-    username: '',
+    username: this.props.username,
     token: '',
     error: '',
     message: '',
@@ -18,7 +11,7 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case AUTH_USER:
-            return { ...state, error: '', message: '', username: action.username, token: action.token, isLoggedIn: true };
+            return { ...state, error: '', message: '', isLoggedIn: true };
         case UNAUTH_USER:
             return { ...state, isLoggedIn: false };
         case AUTH_ERROR:
