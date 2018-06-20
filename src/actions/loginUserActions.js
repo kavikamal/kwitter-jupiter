@@ -16,16 +16,21 @@ export const loginUser  = (credentials) => {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({credentials}),
+            body: JSON.stringify(credentials),
         }
 
         fetch(url, postRequestOptions)
         .then(response => response.json())
         .then(data => {
             console.log("data: ", data);
-            dispatch({ type: AUTH_USER,
-                       username: credentials.username,
-                       token: data.token  });
+            if (data.success) {
+                dispatch({ type: AUTH_USER,
+                        username: credentials.username,
+                        token: data.token  });
+            } else {
+                dispatch({ type: UNAUTH_USER,
+                    message: "Login Unsuccessful" });
+            }
         }).catch(error => {
             return error;
         });
