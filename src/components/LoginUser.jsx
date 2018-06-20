@@ -65,7 +65,6 @@ class LoginUser extends Component {
                 </Form.Field>
                 </Grid.Row>
                 <br/>
-                
                 <Grid.Row centered>
                     <Button type="submit">Login</Button>
                     <br/>
@@ -84,7 +83,9 @@ class LoginUser extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        isLoggedIn: state,
+        username: state.username,
+        token: '',
+        isLoggedIn: state.isLoggedIn,
         error: '',
         message: ''
     }
