@@ -1,61 +1,71 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions';
+import '../App.css';
 import { Header, Icon, Button, Form, Grid } from 'semantic-ui-react'
 
 class LoginUser extends Component {
     state = {
-        username: '',
-        password: '',
-        isLoggedIn: false
+        credentials: {username: '', password: ''}
     }
 
     handleOnChange = (event) => {
+        const field = event.target.name;
+        const credentials = this.state.credentials;
+        credentials[field] = event.target.value;
         this.setState({
-          [event.target.name]: event.target.value
+            credentials: credentials
         });
     }
     
     
     handleOnSubmit = (event) => {
         event.preventDefault();
-        const name = this.state.username.trim();
-        const pword = this.state.password.trim();
+        const name = this.state.credentials.username.trim();
+        const pword = this.state.credentials.password.trim();
+        
         if (name !== '' && pword !== '') {
-            this.props.dispatch(loginUser(name, pword));
+            this.props.dispatch(loginUser(this.state.credentials));
         }
     }
 
     render() {
         return (
             <Form onSubmit={this.handleOnSubmit}>
+                <Grid>
+                <Grid.Row centered>
                 <Header as='h2'> 
                     <Icon name='rss square' />
                     <Header.Content>Kwitter</Header.Content>
 
                 </Header>
-                <Form.Field>
+                </Grid.Row>
+                <Grid.Row centered>
+                <Form.Field inline>
                     <label>Username </label>
                     <input 
                         name="username" 
                         type="text"
                         className="loginFormInput"
                         onChange={this.handleOnChange}
-                        value={this.state.username} autoFocus
+                        value={this.state.credentials.username} autoFocus
                     /> 
                 </Form.Field>
-                <Form.Field>
+                </Grid.Row>
+                <Grid.Row centered>
+                <Form.Field inline> 
                     <label>Password </label>
                     <input 
                         name="password"
                         type="password"
                         className="loginFormInput"
                         onChange={this.handleOnChange}
-                        value={this.state.password}
+                        value={this.state.credentials.password}
                     />
                 </Form.Field>
+                </Grid.Row>
                 <br/>
-                <Grid>
+                
                 <Grid.Row centered>
                     <Button type="submit">Login</Button>
                     <br/>
@@ -72,4 +82,12 @@ class LoginUser extends Component {
     }
 }
 
-export default connect()(LoginUser);
+const mapStateToProps = (state) => {
+    return {
+        isLoggedIn: state,
+        error: '',
+        message: ''
+    }
+}
+
+export default connect(mapStateToProps)(LoginUser);

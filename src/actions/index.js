@@ -1,15 +1,37 @@
 // Action Types
-export const LOGIN_USER = 'LOGIN_USER';
-export const LOGIN_ERROR = 'LOGIN_ERROR';
-
+export const AUTH_USER = 'AUTH_USER';
+export const UNAUTH_USER = 'UNAUTH_USER';
+export const AUTH_ERROR = 'AUTH_ERROR';
 
 // Action Creators
-export const loginUser  = (username, password) => {
+export const loginUser  = (credentials) => {
+  
+    return function(dispatch){
+        console.log("credentials: ", credentials);
 
-    return {
-      type: LOGIN_USER,
-      username: username,
-      password: password,
-      isLoggedIn: true
+        const url = "https://kwitter-api.herokuapp.com/auth/login";
+
+        const postRequestOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({credentials}),
+        }
+
+        fetch(url, postRequestOptions)
+        .then(response => response.json())
+        .then(data => {
+            console.log("data: ", data);
+            dispatch({ type: AUTH_USER });
+        }).catch(error => {
+            return error;
+        });
+    }
+  }
+
+  export const logoutUser = () => {  
+    return function (dispatch) {
+      dispatch({ type: UNAUTH_USER });
     }
   }
