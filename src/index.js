@@ -1,14 +1,16 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
 import './index.css';
-import App from './App';
+import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import thunk from 'redux-thunk';
 import reducer from './reducers'
-// import rootReducer from './reducers';
+import Messages from "./components/Messages";
+import Likes from "./components/Likes";
 
 const store = createStore(reducer, 
     compose(applyMiddleware(thunk),
@@ -16,7 +18,17 @@ const store = createStore(reducer,
 );
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>, document.getElementById('root'));
+    <BrowserRouter>
+        <Provider store={ store }>
+            <React.Fragment>
+                <Switch>
+                    <Route exact path="/" component={ App } />
+                    <Route path="/messages" component={ Messages } />
+                    <Route path="/likes" component={ Likes } />
+                </Switch>
+            </React.Fragment>
+        </Provider>
+    </BrowserRouter>
+  , document.getElementById( "root" ),
+);
 registerServiceWorker();

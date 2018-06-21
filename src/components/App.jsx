@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import KwitterEntry from './components/KwitterEntry';
-import Messages from './components/Messages';
-import { ADD_MESSAGES } from './reducers/getMessagesReducer'
+import KwitterEntry from './KwitterEntry';
+import Messages from './Messages';
+import { ADD_MESSAGES } from '../reducers/getMessagesReducer'
 
 class App extends Component {
   
@@ -21,7 +21,6 @@ class App extends Component {
     return (
       <React.Fragment>
           <KwitterEntry/>
-          <Messages />
       </React.Fragment>
     );
   }
