@@ -20,13 +20,11 @@ const store = createStore(reducer,
 ReactDOM.render(
     <BrowserRouter>
         <Provider store={ store }>
-            <React.Fragment>
                 <Switch>
                     <Route exact path="/" component={ App } />
                     <Route path="/messages" component={ Messages } />
                     <Route path="/likes" component={ Likes } />
                 </Switch>
-            </React.Fragment>
         </Provider>
     </BrowserRouter>
   , document.getElementById( "root" ),
