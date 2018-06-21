@@ -11,6 +11,8 @@ import thunk from 'redux-thunk';
 import reducer from './reducers'
 import Messages from "./components/Messages";
 import Likes from "./components/Likes";
+import { GET_MESSAGES } from './actions/messageActions';
+
 
 const store = createStore(reducer, 
     compose(applyMiddleware(thunk),
