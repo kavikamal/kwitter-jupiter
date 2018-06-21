@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import KwitterEntry from './KwitterEntry';
-import { ADD_MESSAGES } from '../reducers/getMessagesReducer'
+import { GET_MESSAGES } from '../actions/messageActions';
 
 class App extends Component {
   
@@ -11,7 +11,7 @@ class App extends Component {
       .then(data => {
         console.log(data);
         this.props.dispatch({
-          type: ADD_MESSAGES,
+          type: GET_MESSAGES,
           messages: data
         })
       })
