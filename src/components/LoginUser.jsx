@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions';
 import '../App.css';
-import { Header, Icon, Button, Form, Grid } from 'semantic-ui-react'
+import { Container,Header, Icon, Button, Form } from 'semantic-ui-react'
 
 class LoginUser extends Component {
     state = {
@@ -18,7 +18,6 @@ class LoginUser extends Component {
         });
     }
     
-    
     handleOnSubmit = (event) => {
         event.preventDefault();
         const name = this.state.credentials.username.trim();
@@ -29,53 +28,40 @@ class LoginUser extends Component {
         }
     }
 
-    
-
     render() {
         return (
-        <Grid>
+        <Container >
             <Form onSubmit={this.handleOnSubmit}>
-                <br/> 
-                <Grid>
-                <Grid.Row centered>
+                <br/>
                 <Header as='h2'> 
-                    <Icon name='rss square' />
+                    <Icon name='users' color="teal"/>
                     <Header.Content>Kwitter</Header.Content>
-
                 </Header>
-                </Grid.Row>
-                <Grid.Row centered>
-                <Form.Field inline>
-                    <label>Username </label>
-                    <input 
+                <Form.Field inline>       
+                    <Form.Input 
                         name="username" 
                         type="text"
-                        className="loginFormInput"
+                        label="Username"
+                        
                         onChange={this.handleOnChange}
                         value={this.state.credentials.username} autoFocus
                     /> 
                 </Form.Field>
-                </Grid.Row>
-                <Grid.Row centered>
                 <Form.Field inline> 
-                    <label>Password </label>
-                    <input 
+                    <Form.Input 
                         name="password"
                         type="password"
-                        className="loginFormInput"
+                        label="Password"
+                       
                         onChange={this.handleOnChange}
                         value={this.state.credentials.password}
                     />
-                </Form.Field>
-                </Grid.Row>
+                </Form.Field>          
                 <br/>
-                <Grid.Row centered>
-                    <Button type="submit">Login</Button>
-                    <br/>
-                </Grid.Row> 
-                </Grid>
+                <Button type="submit" color="teal">Login</Button>
+                <br/>  
             </Form>
-        </Grid>
+        </Container>
         );
     }
 }
