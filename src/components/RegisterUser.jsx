@@ -45,7 +45,7 @@ class RegisterUser extends Component {
                 <Label color="yellow">New user? Register here.</Label>
                 <br/>
                 <br/>
-                <Form.Field inline>
+                <Form.Field inline>                    
                     <Form.Input
                         name="username"
                         type="text"
@@ -55,7 +55,7 @@ class RegisterUser extends Component {
                         value={this.state.userDetails.username} autoFocus
                     /> 
                 </Form.Field>
-                <Form.Field inline>  
+               <Form.Field inline>  
                     <Form.Input 
                         name="password"
                         type="password"
@@ -65,8 +65,7 @@ class RegisterUser extends Component {
                         value={this.state.userDetails.password}
                     />
                 </Form.Field>
-                <Form.Field inline>
-                   
+                <Form.Field inline>                
                     <Form.Input 
                         name="confirmPassword" 
                         type="password"
