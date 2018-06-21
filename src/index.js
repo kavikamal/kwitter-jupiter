@@ -19,16 +19,30 @@ const store = createStore(reducer,
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 );
 
-ReactDOM.render(
-    <BrowserRouter>
-        <Provider store={ store }>
-                <Switch>
-                    <Route exact path="/" component={ App } />
-                    <Route path="/messages" component={ Messages } />
-                    <Route path="/likes" component={ Likes } />
-                </Switch>
-        </Provider>
-    </BrowserRouter>
-  , document.getElementById( "root" ),
-);
-registerServiceWorker();
+fetch('https://kwitter-api.herokuapp.com/messages')
+.then(response => response.json())
+.then(data => {
+  store.dispatch({
+    type: GET_MESSAGES,
+    messages: data
+  })
+  renderSom();
+})
+
+function renderSom() {
+    ReactDOM.render(
+        <BrowserRouter>
+            <Provider store={ store }>
+                <React.Fragment>
+                    <Switch>
+                        <Route exact path="/" component={ App } />
+                        <Route path="/messages" component={ Messages } />
+                        <Route path="/likes" component={ Likes } />
+                    </Switch>
+                </React.Fragment>
+            </Provider>
+        </BrowserRouter>
+      , document.getElementById( "root" ),
+    );
+    registerServiceWorker();
+}
