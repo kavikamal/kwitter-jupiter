@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { registerUser } from '../actions/registerUserAction';
 import '../App.css';
-import { Button, Form, Grid } from 'semantic-ui-react'
+import { Container,Button, Form, Label } from 'semantic-ui-react'
 
 class RegisterUser extends Component {
     state = {
@@ -38,70 +38,58 @@ class RegisterUser extends Component {
 
     render() {
         return (
+            <Container>
+             <hr/>   
             <Form onSubmit={this.handleOnSubmit}>
-                <Grid>
-                <Grid.Row centered>
-                <Grid.Row centered>
-                    <p>New user?  Register here</p>
-                </Grid.Row>
-                </Grid.Row>
-                <Grid.Row centered>
+                <br/>
+                <Label color="yellow">New user? Register here.</Label>
+                <br/>
+                <br/>
                 <Form.Field inline>
-                    <label>Username </label>
-                    <input 
-                        name="username" 
+                    <Form.Input
+                        name="username"
                         type="text"
-                        className="registerFormInput"
+                        
+                        label="Username"
                         onChange={this.handleOnChange}
                         value={this.state.userDetails.username} autoFocus
                     /> 
                 </Form.Field>
-                </Grid.Row>
-                <Grid.Row centered>
-                <Form.Field inline> 
-                    <label>Password </label>
-                    <input 
+                <Form.Field inline>  
+                    <Form.Input 
                         name="password"
                         type="password"
-                        className="registerFormInput"
+                        label="Password" 
+                        
                         onChange={this.handleOnChange}
                         value={this.state.userDetails.password}
                     />
                 </Form.Field>
-                </Grid.Row>
-                <Grid.Row centered>
                 <Form.Field inline>
-                    <label>Confirm Password </label>
-                    <input 
+                   
+                    <Form.Input 
                         name="confirmPassword" 
                         type="password"
-                        className="registerFormInput"
+                        label="Confirm Password" 
                         onChange={this.handleOnChange}
                         value={this.state.userDetails.confirmPassword} 
                     /> 
                 </Form.Field>
-                </Grid.Row>
-                <Grid.Row centered>
-                <Form.Field inline>
-                    <label>Display Name </label>
-                    <input 
+            
+                <Form.Field inline>   
+                    <Form.Input 
                         name="displayName" 
                         type="text"
-                        className="registerFormInput"
+                        label="Display Name"     
                         onChange={this.handleOnChange}
                         value={this.state.userDetails.displayName}
                     /> 
                 </Form.Field>
-                </Grid.Row>
                 <br/>
-                
-                <Grid.Row centered>
-                    <Button type='submit'>Signup</Button>
-                    <br/>
-                </Grid.Row>
-               
-                </Grid>
+                <Button type='submit' color="teal">Signup</Button>
+                <br/>
             </Form>
+            </Container>
         );
     }
 }

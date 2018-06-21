@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
 import '../App.css';
 import LoginUser from './LoginUser';
 import RegisterUser from './RegisterUser';
@@ -8,11 +8,11 @@ class KwitterEntry extends Component {
 
     render() {
         return (
-       <Grid>     
+       <Container>     
        <LoginUser/> 
        <br/>
        <RegisterUser/>
-       </Grid> 
+       </Container> 
         );
     }
 }
