@@ -5,7 +5,8 @@ import getMessagesReducer, { messagesState } from "./getMessagesReducer";
 
 export const initialState = {  
     userState: userState,
-    registerUserState:registerUserState
+    registerUserState:registerUserState,
+    messagesState: messagesState
 };
   
 export default combineReducers( { 

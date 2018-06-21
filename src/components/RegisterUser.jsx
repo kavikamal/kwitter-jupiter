@@ -65,8 +65,7 @@ class RegisterUser extends Component {
                         value={this.state.userDetails.password}
                     />
                 </Form.Field>
-                <Form.Field inline>
-                   
+                <Form.Field inline> 
                     <Form.Input 
                         name="confirmPassword" 
                         type="password"
