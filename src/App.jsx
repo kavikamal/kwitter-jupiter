@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import LoginUser from './components/LoginUser';
-import Messages from './components/Messages';
-export const ADD_MESSAGES = 'ADD_MESSAGES';
+import KwitterEntry from './components/KwitterEntry';
+
+
 class App extends Component {
   
   componentDidMount() {
@@ -17,10 +17,9 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <LoginUser />
-        <Messages />
-      </div>
+      <React.Fragment>
+          <KwitterEntry/>
+      </React.Fragment>
     );
   }
 }
