@@ -1,14 +1,14 @@
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from '../actions';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from '../actions/loginUserActions';
 
-const initialState = {
-    username: this.props.username,
+export const userState = {
+    username: '',
     token: '',
     error: '',
     message: '',
     isLoggedIn: false
 }
 
-export default (state = initialState, action) => {
+export default  (state = userState, action) => {
     switch (action.type) {
         case AUTH_USER:
             return { ...state, error: '', message: '', isLoggedIn: true };
@@ -21,3 +21,4 @@ export default (state = initialState, action) => {
     }
 
 }
+
