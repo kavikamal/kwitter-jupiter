@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import LoginUser from './components/LoginUser';
+import KwitterEntry from './components/KwitterEntry';
+
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <LoginUser />
-      </div>
+      <React.Fragment>
+          <KwitterEntry/>
+      </React.Fragment>
     );
   }
 }

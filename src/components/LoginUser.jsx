@@ -29,9 +29,13 @@ class LoginUser extends Component {
         }
     }
 
+    
+
     render() {
         return (
+        <Grid>
             <Form onSubmit={this.handleOnSubmit}>
+                <br/> 
                 <Grid>
                 <Grid.Row centered>
                 <Header as='h2'> 
@@ -68,15 +72,10 @@ class LoginUser extends Component {
                 <Grid.Row centered>
                     <Button type="submit">Login</Button>
                     <br/>
-                </Grid.Row>
-                <Grid.Row centered>
-                    <p>New user?  Register here</p>
-                </Grid.Row>
-                <Grid.Row centered>
-                    <Button type="submit">Register</Button>
-                </Grid.Row>
+                </Grid.Row> 
                 </Grid>
             </Form>
+        </Grid>
         );
     }
 }
@@ -87,7 +86,8 @@ const mapStateToProps = (state) => {
         token: '',
         isLoggedIn: state.isLoggedIn,
         error: '',
-        message: ''
+        message: '',
+        isRegister: state.isRegister
     }
 }
 
