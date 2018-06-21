@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import loginUserReducer, { userState } from "./loginUserReducer";
 import registerUserReducer, { registerUserState } from "./registerUserReducer";
+import getMessagesReducer, { messagesState } from "./getMessagesReducer";
 
 export const initialState = {  
     userState: userState,
@@ -9,6 +10,7 @@ export const initialState = {
   
 export default combineReducers( { 
     loginUserReducer,
-    registerUserReducer
+    registerUserReducer,
+    getMessagesReducer
 } );
   
