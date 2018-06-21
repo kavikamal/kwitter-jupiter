@@ -11,7 +11,7 @@ export const userState = {
 export default  (state = userState, action) => {
     switch (action.type) {
         case AUTH_USER:
-            return { ...state, error: '', message: '', isLoggedIn: true };
+            return { ...state, error: '', message: '', username: action.username, token: action.token, isLoggedIn: true };
         case UNAUTH_USER:
             return { ...state, isLoggedIn: false };
         case AUTH_ERROR:
