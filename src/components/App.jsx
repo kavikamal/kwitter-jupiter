@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import KwitterEntry from './KwitterEntry';
+import Messages from "./Messages";
+import Likes from "./Likes";
 
-
+import {  withRouter,Switch, Route } from "react-router-dom";
 class App extends Component {
   
-  componentDidMount() {
-   
-  }
-
   render() {
     return (
       <React.Fragment>
-          <KwitterEntry/>
+      <Switch>
+          <Route exact path="/" render={()=> <KwitterEntry></KwitterEntry> } />
+          <Route path="/messages" render={()=> <Messages></Messages> } />
+          <Route path="/likes" render={()=> <Likes></Likes> } />
+      </Switch>
       </React.Fragment>
     );
   }
 }
 
-
-export default connect ()(App);
-
-// Need to map state to props then do this.props.dispatch
+export default withRouter(connect ()(App));
