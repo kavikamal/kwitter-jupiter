@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-//import { addNewMessage } from '../actions';
+import { GET_MESSAGES } from '../actions/messageActions';
 import '../App.css';
 import { Form, Button, Container } from 'semantic-ui-react';
 
@@ -41,14 +41,14 @@ class AddMessage extends Component {
             .then(response => response.json())
             .then(data => {
                 console.log("data: ", data);
-                
-                // dispatch({ type: ADD_MESSAGE,
-                //             id: data.id, 
-                //             text: data.text, 
-                //             userId: data.userId,  
-                //             updatedAt: data.updatedAt,
-                //             createdAt: data.createdAt
-                //         });
+                fetch('https://kwitter-api.herokuapp.com/messages')
+                .then(response => response.json())
+                .then(data => {
+                this.props.dispatch({
+                    type: GET_MESSAGES,
+                    messages: data
+                })
+                })
             }).catch(error => {
                 return error;
             });
