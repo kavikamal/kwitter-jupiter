@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import '../App.css';
 
 
 class Messages extends React.Component {
     render () {
-        console.log(this.props.messages);
+        // Need to find away to reduce this
+        const messagesToMap = this.props.messages.messageReducer.messages.messages;
         return (
-            <div id="messages">Hello Kwitter User ..This is Messeges Page</div>
-        )
+            <div>
+                <ul>
+                {
+                messagesToMap.map((item, i) => {
+                    console.log(item)
+                    return (
+                        <li key={i} className="messageItem">{item.text}</li>
+                    )
+                })}
+                </ul>
+            </div>        
+      )
     }
 }
 
