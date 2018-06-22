@@ -5,12 +5,10 @@ export const AUTH_ERROR = 'AUTH_ERROR';
 
 // Action Creators
 export const loginUser  = (credentials) => {
-  
     return function(dispatch){
         console.log("credentials: ", credentials);
 
         const url = "https://kwitter-api.herokuapp.com/auth/login";
-
         const postRequestOptions = {
             method: "POST",
             headers: {
@@ -25,8 +23,9 @@ export const loginUser  = (credentials) => {
             console.log("data: ", data);
             if (data.success) {
                 dispatch({ type: AUTH_USER,
-                        username: credentials.username,
+                        username: credentials.username,userid:data.id,
                         token: data.token  });
+
             } else {
                 dispatch({ type: UNAUTH_USER,
                     message: "Login Unsuccessful" });
