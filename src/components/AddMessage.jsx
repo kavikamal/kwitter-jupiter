@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-//import { addNewMessage } from '../actions';
+import { GET_MESSAGES } from '../actions/messageActions';
 import '../App.css';
 import { Form, Button, Container } from 'semantic-ui-react';
 class AddMessage extends Component {
@@ -18,16 +18,12 @@ class AddMessage extends Component {
     handleOnSubmit = (event) => {
         event.preventDefault();
         const newMsg = this.state.text.trim();
-    console.log("this.props.messages: ", this.props.messages)
-    console.log("this.props.token: " + this.props.token)
   
         if (newMsg !== '') {
-            //this.props.dispatch(addNewMessage(newMsg));
             const url = "https://kwitter-api.herokuapp.com/messages";
             const postRequestOptions = {
                 method: "POST",
                 headers: {
-                    // "Authorization": "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTI5NTkwNTc2fQ.mkjAhZhfaxCpUSfoGXq9Yw2xBJBP8xA2WGseI7Yp9Pc",
                     "Authorization": "Bearer " + this.props.token,
                     "Content-Type": "application/json"
                     
@@ -38,14 +34,16 @@ class AddMessage extends Component {
             .then(response => response.json())
             .then(data => {
                 console.log("data: ", data);
-                
-                // dispatch({ type: ADD_MESSAGE,
-                //             id: data.id, 
-                //             text: data.text, 
-                //             userId: data.userId,  
-                //             updatedAt: data.updatedAt,
-                //             createdAt: data.createdAt
-                //         });
+                fetch('https://kwitter-api.herokuapp.com/messages')
+                .then(response => response.json())
+                .then(data => {
+                    this.props.dispatch({
+                        type: GET_MESSAGES,
+                        messages: data
+                    })
+                    //Force a render with a simulated state change
+                    this.setState({ state: this.state });
+                })
             }).catch(error => {
                 return error;
             });
