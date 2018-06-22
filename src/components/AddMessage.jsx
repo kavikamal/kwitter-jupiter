@@ -69,10 +69,12 @@ class AddMessage extends Component {
         );
     }
 }
+
 const mapStateToProps = (state) => {
     return {
         token: state.loginUserReducer.token,
         messages: state.messageReducer.messages.messages
     }
 }
+
 export default connect(mapStateToProps)(AddMessage);
