@@ -22,7 +22,6 @@ class AddMessage extends Component {
         const newMsg = this.state.text.trim();
         
         if (newMsg !== '') {
-            console.log("adding new message")
             this.props.dispatch(addNewMessage(newMsg));
         }
     }
@@ -44,5 +43,16 @@ class AddMessage extends Component {
         );
     }
 }
+
+// const mapStateToProps = (state) => {
+//     return {
+//         username: state.username,
+//         token: this.props.token,
+//         isLoggedIn: state.isLoggedIn,
+//         error: '',
+//         message: '',
+//         isRegister: state.isRegister
+//     }
+// }
 
 export default connect()(AddMessage);

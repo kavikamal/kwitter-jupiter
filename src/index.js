@@ -11,6 +11,7 @@ import thunk from 'redux-thunk';
 import reducer from './reducers'
 import Messages from "./components/Messages";
 import Likes from "./components/Likes";
+import AddMessage from "./components/AddMessage";
 
 const store = createStore(reducer, 
     compose(applyMiddleware(thunk),
@@ -25,6 +26,7 @@ ReactDOM.render(
                     <Route exact path="/" component={ App } />
                     <Route path="/messages" component={ Messages } />
                     <Route path="/likes" component={ Likes } />
+                    <Route path="/addmessage" component={ AddMessage } />
                 </Switch>
             </React.Fragment>
         </Provider>
