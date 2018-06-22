@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { loginUser } from '../actions';
 import '../App.css';
-import { Container,Header, Icon, Button, Form } from 'semantic-ui-react'
+import { Container,Header, Icon, Button, Form } from 'semantic-ui-react';
+import { withRouter } from "react-router-dom";
 
 class LoginUser extends Component {
     state = {
@@ -25,6 +26,7 @@ class LoginUser extends Component {
         
         if (name !== '' && pword !== '') {
             this.props.dispatch(loginUser(this.state.credentials));
+            this.props.history.push('/messages');    
         }
     }
 
@@ -41,8 +43,7 @@ class LoginUser extends Component {
                     <Form.Input 
                         name="username" 
                         type="text"
-                        label="Username"
-                        
+                        label="Username" 
                         onChange={this.handleOnChange}
                         value={this.state.credentials.username} autoFocus
                     /> 
@@ -52,7 +53,6 @@ class LoginUser extends Component {
                         name="password"
                         type="password"
                         label="Password"
-                       
                         onChange={this.handleOnChange}
                         value={this.state.credentials.password}
                     />
@@ -68,13 +68,14 @@ class LoginUser extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        username: state.username,
-        token: '',
-        isLoggedIn: state.isLoggedIn,
-        error: '',
-        message: '',
-        isRegister: state.isRegister
+        // username: state.username,
+        // token: '',
+        // isLoggedIn: state.isLoggedIn,
+        // error: '',
+        // message: '',
+        // isRegister: state.isRegister
+        userState: state.userState
     }
 }
 
-export default connect(mapStateToProps)(LoginUser);
+export default withRouter(connect(mapStateToProps)(LoginUser));

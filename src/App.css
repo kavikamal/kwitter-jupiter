@@ -15,10 +15,3 @@ textarea {
   margin-left: 475px !important;
 }
 
-.messageItem {
-  list-style-type: none;
-  margin: 6px 0;
-  background-color: lightblue;
-  border: 1px solid black;
-  padding: 2%;
-}
