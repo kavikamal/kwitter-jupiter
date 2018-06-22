@@ -22,7 +22,6 @@ class AddMessage extends Component {
         const newMsg = this.state.text.trim();
     console.log("this.props.messages: ", this.props.messages)
     console.log("this.props.token: " + this.props.token)
-    console.log("this.props: ", this.props)
   
         if (newMsg !== '') {
             //this.props.dispatch(addNewMessage(newMsg));
@@ -31,12 +30,12 @@ class AddMessage extends Component {
             const postRequestOptions = {
                 method: "POST",
                 headers: {
-                    "Authorization": "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTI5NTkwNTc2fQ.mkjAhZhfaxCpUSfoGXq9Yw2xBJBP8xA2WGseI7Yp9Pc",
-                    // "Authorization": "Bearer " + this.props.token,
+                    // "Authorization": "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTI5NTkwNTc2fQ.mkjAhZhfaxCpUSfoGXq9Yw2xBJBP8xA2WGseI7Yp9Pc",
+                    "Authorization": "Bearer " + this.props.token,
                     "Content-Type": "application/json"
                     
                 },
-                body: JSON.stringify({newMsg}),
+                body: JSON.stringify({text: newMsg}),
             }
             fetch(url, postRequestOptions)
             .then(response => response.json())
@@ -79,8 +78,8 @@ class AddMessage extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        token: state.token,
-        messages: state.messages
+        token: state.loginUserReducer.token,
+        messages: state.messageReducer.messages.messages
     }
 }
 
