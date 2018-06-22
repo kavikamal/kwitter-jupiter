@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addNewMessage } from '../actions';
+//import { addNewMessage } from '../actions';
 import '../App.css';
 import { Form, Button, Container } from 'semantic-ui-react';
 
@@ -21,7 +21,9 @@ class AddMessage extends Component {
         event.preventDefault();
         const newMsg = this.state.text.trim();
     console.log("this.props.messages: ", this.props.messages)
-        
+    console.log("this.props.token: " + this.props.token)
+    console.log("this.props: ", this.props)
+  
         if (newMsg !== '') {
             //this.props.dispatch(addNewMessage(newMsg));
             const url = "https://kwitter-api.herokuapp.com/messages";
@@ -29,8 +31,8 @@ class AddMessage extends Component {
             const postRequestOptions = {
                 method: "POST",
                 headers: {
-                    //"Authorization": "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTI5NTkwNTc2fQ.mkjAhZhfaxCpUSfoGXq9Yw2xBJBP8xA2WGseI7Yp9Pc",
-                    "Authorization": "Bearer " + this.props.token,
+                    "Authorization": "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTI5NTkwNTc2fQ.mkjAhZhfaxCpUSfoGXq9Yw2xBJBP8xA2WGseI7Yp9Pc",
+                    // "Authorization": "Bearer " + this.props.token,
                     "Content-Type": "application/json"
                     
                 },

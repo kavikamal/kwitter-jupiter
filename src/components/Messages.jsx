@@ -2,14 +2,19 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import '../App.css';
 import { Feed,Icon, Divider } from 'semantic-ui-react'
+import AddMessage from './AddMessage';
 
 
 class Messages extends React.Component {
     render () {
         // Need to find away to reduce this
         const messagesToMap = this.props.messages.messageReducer.messages.messages;
+        
         return (
             <div>
+                <div>
+                    <AddMessage />
+                </div>
                 <ul>
                 {
                 messagesToMap.map((item, i) => {
