@@ -14,7 +14,7 @@
     "redux-thunk": "^2.3.0",
     "semantic-ui-react": "^0.81.1"
   },
-  "homepage": "https://cjbruin23.github.io/kwitter-jupiter/",
+  "homepage": "https://kavikamal.github.io/kwitter-jupiter/",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
@@ -26,13 +26,13 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cjbruin23/kwitter-jupiter.git"
+    "url": "git+https://github.com/kavikamal/kwitter-jupiter.git"
   },
   "author": "Christine Ooi <christine.ooi@gmail.com>",
   "license": "MIT",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).",
   "bugs": {
-    "url": "https://github.com/cjbruin23/kwitter-jupiter/issues"
+    "url": "https://github.com/kavikamal/kwitter-jupiter/issues"
   },
   "devDependencies": {},
   "keywords": []

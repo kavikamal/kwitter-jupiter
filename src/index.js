@@ -30,7 +30,7 @@ fetch('https://kwitter-api.herokuapp.com/messages')
 
 function renderSom() {
     ReactDOM.render(
-        <BrowserRouter>
+      <BrowserRouter basename={process.env.NODE_ENV === "production" ? "/kwitter-jupiter" : "/"}>
             <Provider store={ store }>
                 <App/>
             </Provider>
