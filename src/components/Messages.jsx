@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import '../App.css';
+import AddMessage from './AddMessage';
 import { Feed,Icon, List } from 'semantic-ui-react'
 import { withRouter } from "react-router-dom";
 
@@ -8,7 +9,12 @@ class Messages extends React.Component {
     render () {
         // Need to find away to reduce this
         const messagesToMap = this.props.messages.messageReducer.messages.messages;
+        
         return (
+            <React.Fragment>
+            <div>
+                <AddMessage />
+            </div>
             <List>
                 {
                 messagesToMap.map((item) => {
@@ -37,7 +43,8 @@ class Messages extends React.Component {
                     </Feed>
                     )
                 })}
-             </List>     
+            </List>  
+             </React.Fragment>   
       )
     }
 }
