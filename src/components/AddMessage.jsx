@@ -20,9 +20,40 @@ class AddMessage extends Component {
     handleOnSubmit = (event) => {
         event.preventDefault();
         const newMsg = this.state.text.trim();
+    console.log("this.props.messages: ", this.props.messages)
         
         if (newMsg !== '') {
-            this.props.dispatch(addNewMessage(newMsg));
+            //this.props.dispatch(addNewMessage(newMsg));
+            const url = "https://kwitter-api.herokuapp.com/messages";
+
+            const postRequestOptions = {
+                method: "POST",
+                headers: {
+                    //"Authorization": "Bearer " + "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNTI5NTkwNTc2fQ.mkjAhZhfaxCpUSfoGXq9Yw2xBJBP8xA2WGseI7Yp9Pc",
+                    "Authorization": "Bearer " + this.props.token,
+                    "Content-Type": "application/json"
+                    
+                },
+                body: JSON.stringify({newMsg}),
+            }
+            fetch(url, postRequestOptions)
+            .then(response => response.json())
+            .then(data => {
+                console.log("data: ", data);
+                
+                // dispatch({ type: ADD_MESSAGE,
+                //             id: data.id, 
+                //             text: data.text, 
+                //             userId: data.userId,  
+                //             updatedAt: data.updatedAt,
+                //             createdAt: data.createdAt
+                //         });
+            }).catch(error => {
+                return error;
+            });
+            this.setState({
+                text: ''
+            });
         }
     }
 
@@ -44,15 +75,11 @@ class AddMessage extends Component {
     }
 }
 
-// const mapStateToProps = (state) => {
-//     return {
-//         username: state.username,
-//         token: this.props.token,
-//         isLoggedIn: state.isLoggedIn,
-//         error: '',
-//         message: '',
-//         isRegister: state.isRegister
-//     }
-// }
+const mapStateToProps = (state) => {
+    return {
+        token: state.token,
+        messages: state.messages
+    }
+}
 
-export default connect()(AddMessage);
+export default connect(mapStateToProps)(AddMessage);

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import KwitterEntry from './KwitterEntry';
-import { GET_MESSAGES } from '../actions/messageActions';
+
 
 class App extends Component {
   
