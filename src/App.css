@@ -6,12 +6,10 @@ body{
 }
 
 textarea {
-  width: 525px !important;  
-  margin-left: 50px !important;
-  margin-top: 20px !important;
+  width: 400px !important; 
+  margin-top: 20px !important; 
 }
-
 #tweetBtn {
-  margin-left: 475px !important;
+  margin-left: 300px !important;
 }
 
