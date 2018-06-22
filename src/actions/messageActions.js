@@ -20,7 +20,6 @@ export const addNewMessage  = (text) => {
             },
             body: JSON.stringify({text}),
         }
-    console.log("about to fetch");
         fetch(url, postRequestOptions)
         .then(response => response.json())
         .then(data => {

@@ -20,6 +20,7 @@ class AddMessage extends Component {
         const newMsg = this.state.text.trim();
   
         if (newMsg !== '') {
+
             const url = "https://kwitter-api.herokuapp.com/messages";
             const postRequestOptions = {
                 method: "POST",
@@ -37,6 +38,7 @@ class AddMessage extends Component {
                 fetch('https://kwitter-api.herokuapp.com/messages')
                 .then(response => response.json())
                 .then(data => {
+
                     this.props.dispatch({
                         type: GET_MESSAGES,
                         messages: data
@@ -69,10 +71,12 @@ class AddMessage extends Component {
         );
     }
 }
+
 const mapStateToProps = (state) => {
     return {
         token: state.loginUserReducer.token,
         messages: state.messageReducer.messages.messages
     }
 }
+
 export default connect(mapStateToProps)(AddMessage);

@@ -13,10 +13,12 @@ import reducer from './reducers'
 import { GET_MESSAGES } from './actions/messageActions';
 
 
+
 const store = createStore(reducer, 
     compose(applyMiddleware(thunk),
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 );
+
 
 fetch('https://kwitter-api.herokuapp.com/messages')
 .then(response => response.json())
