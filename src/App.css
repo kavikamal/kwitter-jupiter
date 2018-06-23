@@ -2,7 +2,8 @@
   margin-top: 20px;
 }
 body{
-  margin-left:auto
+  margin-left:auto;
+  width:80%;
 }
 
 textarea {

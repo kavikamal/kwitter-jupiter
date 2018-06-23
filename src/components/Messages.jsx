@@ -54,7 +54,7 @@ class Messages extends React.Component {
                         <Feed>
                         <Feed.Event>
                             <Feed.Label>
-                               <img alt='Profile Pic' src='https://cdn.pixabay.com/photo/2014/04/03/11/56/manager-312603_960_720.png'/>
+                               <img alt='Profile Pic' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTa_V01aDRlNM26a0r9_rYj-CUtBpmeLow-Z2UbgHN49QlQmjfgzQ'/>
                             </Feed.Label>
                             <Feed.Content>
                                 <Feed.Summary>
