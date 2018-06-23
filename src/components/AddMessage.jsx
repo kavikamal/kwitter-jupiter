@@ -34,7 +34,7 @@ class AddMessage extends Component {
             .then(response => response.json())
             .then(data => {
                 console.log("data: ", data);
-                fetch('https://kwitter-api.herokuapp.com/messages')
+                fetch(url)
                 .then(response => response.json())
                 .then(data => {
                     this.props.dispatch({
